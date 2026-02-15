@@ -2,6 +2,11 @@
 
 TODO
 
+Auth
+- Create admin initial user when application is start up.
+
+DB
+
 [ ] User table (adopted from )
   - id
   - role (admin/coordinator)
