@@ -1,6 +1,6 @@
-import { HeadContent, Scripts, createRootRoute } from "@tanstack/react-router";
-import { TanStackRouterDevtoolsPanel } from "@tanstack/react-router-devtools";
 import { TanStackDevtools } from "@tanstack/react-devtools";
+import { createRootRoute, HeadContent, Scripts } from "@tanstack/react-router";
+import { TanStackRouterDevtoolsPanel } from "@tanstack/react-router-devtools";
 
 import Header from "../components/Header";
 
@@ -17,7 +17,7 @@ export const Route = createRootRoute({
 				content: "width=device-width, initial-scale=1",
 			},
 			{
-				title: "TanStack Start Starter",
+				title: "Powerpack - FVP Inventory System",
 			},
 		],
 		links: [
@@ -36,9 +36,11 @@ function RootDocument({ children }: { children: React.ReactNode }) {
 			<head>
 				<HeadContent />
 			</head>
-			<body>
+			<body className="min-h-screen bg-linear-to-b from-green-900 via-green-800 to-green-900">
 				<Header />
-				{children}
+				<main className="min-h-screen p-4">
+					{children}
+				</main>
 				<TanStackDevtools
 					config={{
 						position: "bottom-right",

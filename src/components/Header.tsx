@@ -1,9 +1,9 @@
 import { Link } from "@tanstack/react-router";
-
-import BetterAuthHeader from "../integrations/better-auth/header-user.tsx";
+import { BoxesIcon, ClipboardType, Database, Globe, Home, Menu, X } from "lucide-react";
 
 import { useState } from "react";
-import { ClipboardType, Database, Globe, Home, Menu, X } from "lucide-react";
+import BetterAuthHeader from "../integrations/better-auth/header-user.tsx";
+import { Button } from "./ui/button.tsx";
 
 export default function Header() {
 	const [isOpen, setIsOpen] = useState(false);
@@ -11,21 +11,15 @@ export default function Header() {
 	return (
 		<>
 			<header className="p-4 flex items-center bg-gray-800 text-white shadow-lg">
-				<button
+				<Button
 					onClick={() => setIsOpen(true)}
 					className="p-2 hover:bg-gray-700 rounded-lg transition-colors"
 					aria-label="Open menu"
 				>
 					<Menu size={24} />
-				</button>
+				</Button>
 				<h1 className="ml-4 text-xl font-semibold">
-					<Link to="/">
-						<img
-							src="/tanstack-word-logo-white.svg"
-							alt="TanStack Logo"
-							className="h-10"
-						/>
-					</Link>
+					Powerpack
 				</h1>
 			</header>
 
@@ -36,13 +30,13 @@ export default function Header() {
 			>
 				<div className="flex items-center justify-between p-4 border-b border-gray-700">
 					<h2 className="text-xl font-bold">Navigation</h2>
-					<button
+					<Button
 						onClick={() => setIsOpen(false)}
 						className="p-2 hover:bg-gray-800 rounded-lg transition-colors"
 						aria-label="Close menu"
 					>
 						<X size={24} />
-					</button>
+					</Button>
 				</div>
 
 				<nav className="flex-1 p-4 overflow-y-auto">
@@ -59,7 +53,18 @@ export default function Header() {
 						<span className="font-medium">Home</span>
 					</Link>
 
-					{/* Demo Links Start */}
+					<Link
+						to="/inventory"
+						onClick={() => setIsOpen(false)}
+						className="flex items-center gap-3 p-3 rounded-lg hover:bg-gray-800 transition-colors mb-2"
+						activeProps={{
+							className:
+								"flex items-center gap-3 p-3 rounded-lg bg-cyan-600 hover:bg-cyan-700 transition-colors mb-2",
+						}}
+					>
+						<BoxesIcon size={20}></BoxesIcon>
+						<span className="font-medium">Inventory</span>
+					</Link>
 
 					<Link
 						to="/demo/drizzle"
