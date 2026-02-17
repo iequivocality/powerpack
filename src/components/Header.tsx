@@ -1,5 +1,13 @@
 import { Link } from "@tanstack/react-router";
-import { BoxesIcon, ClipboardType, Database, Globe, Home, Menu, X } from "lucide-react";
+import {
+	BoxesIcon,
+	ClipboardType,
+	Database,
+	Globe,
+	Home,
+	Menu,
+	X,
+} from "lucide-react";
 
 import { useState } from "react";
 import BetterAuthHeader from "../integrations/better-auth/header-user.tsx";
@@ -18,9 +26,7 @@ export default function Header() {
 				>
 					<Menu size={24} />
 				</Button>
-				<h1 className="ml-4 text-xl font-semibold">
-					Powerpack
-				</h1>
+				<h1 className="ml-4 text-xl font-semibold">Powerpack</h1>
 			</header>
 
 			<aside

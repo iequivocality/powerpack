@@ -38,9 +38,7 @@ function RootDocument({ children }: { children: React.ReactNode }) {
 			</head>
 			<body className="min-h-screen bg-linear-to-b from-green-900 via-green-800 to-green-900">
 				<Header />
-				<main className="min-h-screen p-4">
-					{children}
-				</main>
+				<main className="min-h-screen p-4">{children}</main>
 				<TanStackDevtools
 					config={{
 						position: "bottom-right",

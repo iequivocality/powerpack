@@ -18,7 +18,6 @@ DB
   - id
   - name
   - unit_price
-  - category
   - is_pp (indicates if product can be purchased as a power pack or defined quantity)
   - pp_qty (1 if is_power_pack == false)
   - pp_price (same as unit_price if is_power_pack == false)
