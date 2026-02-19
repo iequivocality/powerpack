@@ -122,7 +122,6 @@ export const products = pgTable("products", {
 	sku: numeric().notNull(),
 	name: text().notNull(),
 	unitPrice: decimal("unit_price").notNull(),
-	keywords: text().default("").notNull(),
 	isPowerpack: boolean("is_powerpack").notNull(),
 	powerpackQuantity: integer("powerpack_quantity").default(1).notNull(),
 	powerpackPrice: decimal("powerpack_price").notNull(),
@@ -130,25 +129,16 @@ export const products = pgTable("products", {
 	createdAt: timestamp("created_at").defaultNow(),
 });
 
-export const inventory = pgTable("inventory", {
+export const inventoryEntry = pgTable("inventory_entry", {
 	id: serial().primaryKey(),
 	productId: text("product_id")
 		.notNull()
 		.references(() => products.id, { onDelete: "cascade" }),
 	quantity: integer().default(0),
-	updatedAt: timestamp("updated_at")
+	unitPrice: decimal("unit_price").notNull(),
+	createdAt: timestamp("updated_at")
 		.$onUpdate(() => /* @__PURE__ */ new Date())
 		.notNull(),
 });
 
-export const purchases = pgTable("purchases", {
-	id: serial().primaryKey(),
-	receiptNo: text().notNull(),
-	productId: text("product_id")
-		.notNull()
-		.references(() => products.id, { onDelete: "cascade" }),
-	quantity: integer().default(0),
-	totalPrice: decimal("total_price").notNull(),
-	date: timestamp().defaultNow(),
-	createdAt: timestamp("created_at").defaultNow(),
-});
+
