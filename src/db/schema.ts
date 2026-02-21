@@ -110,24 +110,23 @@ export const accountRelations = relations(account, ({ one }) => ({
 	}),
 }));
 
-// NON-AUTH
-export const todos = pgTable("todos", {
-	id: serial().primaryKey(),
-	title: text().notNull(),
-	createdAt: timestamp("created_at").defaultNow(),
-});
-
+/**
+ * INVENTORY
+ */
 export const products = pgTable("products", {
 	id: serial().primaryKey(),
 	sku: numeric().notNull(),
 	name: text().notNull(),
 	unitPrice: decimal("unit_price").notNull(),
 	isPowerpack: boolean("is_powerpack").notNull(),
-	powerpackQuantity: integer("powerpack_quantity").default(1).notNull(),
+	powerpackQuantity: integer("powerpack_quantity").default(1).notNull(), // quantity when
 	powerpackPrice: decimal("powerpack_price").notNull(),
-	visible: boolean().notNull(),
+	visible: boolean().notNull().default(true),
 	createdAt: timestamp("created_at").defaultNow(),
 });
+
+export type Product = typeof products.$inferSelect;
+export type NewProduct = typeof products.$inferInsert;
 
 export const inventoryEntry = pgTable("inventory_entry", {
 	id: serial().primaryKey(),
@@ -136,9 +135,14 @@ export const inventoryEntry = pgTable("inventory_entry", {
 		.references(() => products.id, { onDelete: "cascade" }),
 	quantity: integer().default(0),
 	unitPrice: decimal("unit_price").notNull(),
-	createdAt: timestamp("updated_at")
+	visible: boolean().notNull().default(true),
+	reg: boolean().notNull().default(true),
+	dyi: boolean().notNull().default(false),
+	ci: boolean().notNull().default(false),
+	ar: boolean().notNull().default(false),
+	createdAt: timestamp("created_at").defaultNow().notNull(),
+	updatedAt: timestamp("updated_at")
+		.defaultNow()
 		.$onUpdate(() => /* @__PURE__ */ new Date())
 		.notNull(),
 });
-
-

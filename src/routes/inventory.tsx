@@ -90,8 +90,8 @@ function RouteComponent() {
 				<SearchInput />
 				<InventoryTable></InventoryTable>
 			</section>
-			<section className="col-span-2 row-span-3">Test</section>
-			<section className="col-span-10 row-span-3">Test</section>
+			{/* <section className="col-span-2 row-span-3">Test</section>
+			<section className="col-span-10 row-span-3">Test</section> */}
 		</div>
 	);
 }

@@ -2,14 +2,15 @@ import { createFileRoute, useRouter } from "@tanstack/react-router";
 import { createServerFn } from "@tanstack/react-start";
 import { desc } from "drizzle-orm";
 import { db } from "@/db/index";
-import { todos } from "@/db/schema";
+
+// import { todos } from "@/db/schema";
 
 const getTodos = createServerFn({
 	method: "GET",
 }).handler(async () => {
-	return await db.query.todos.findMany({
-		orderBy: [desc(todos.createdAt)],
-	});
+	// return await db.query.todos.findMany({
+	// 	orderBy: [desc(todos.createdAt)],
+	// });
 });
 
 const createTodo = createServerFn({
@@ -17,7 +18,7 @@ const createTodo = createServerFn({
 })
 	.inputValidator((data: { title: string }) => data)
 	.handler(async ({ data }) => {
-		await db.insert(todos).values({ title: data.title });
+		// await db.insert(todos).values({ title: data.title });
 		return { success: true };
 	});
 
@@ -88,7 +89,7 @@ function DemoDrizzle() {
 				<h2 className="text-2xl font-bold mb-4 text-indigo-200">Todos</h2>
 
 				<ul className="space-y-3 mb-6">
-					{todos.map((todo) => (
+					{/* {todos.map((todo) => (
 						<li
 							key={todo.id}
 							className="rounded-lg p-4 shadow-md border transition-all hover:scale-[1.02] cursor-pointer group"
@@ -110,7 +111,7 @@ function DemoDrizzle() {
 						<li className="text-center py-8 text-indigo-300/70">
 							No todos yet. Create one below!
 						</li>
-					)}
+					)} */}
 				</ul>
 
 				<form onSubmit={handleSubmit} className="flex gap-2">
